@@ -1,6 +1,6 @@
 (ns app.components
   (:require [app.ui :as ui]
-   									[uix.core :refer [$ use-state defui]]))
+            [uix.core :refer [$ use-state defui]]))
 
 (defui counter []
   (let [[count set-count!] (use-state 0)]
@@ -8,16 +8,16 @@
       ($ :pre.text-3xl.mb-2.w-4.dark:text-white count)
       ($ :.gap-2
         ($ ui/button {:on-click #(set-count! inc)} "+")
-      ($ ui/button {:on-click #(set-count! dec)} "-")))))
+        ($ ui/button {:on-click #(set-count! dec)} "-")))))
 
 (defui app []
   ($ :main.flex.flex-col.gap-8.min-h-screen.justify-center.items-center.dark:bg-neutral-950.px-12.py-12
     ($ ui/heading "ClojureScript Starter"
       ($ ui/p {:class '[my-2]} "Made with " 
-      ($ ui/a {:href "https://github.com/pitch-io/uix"} "UIx, ")
-      ($ ui/a {:href "https://tailwindcss.com"} "TailwindCSS, ")
-      ($ ui/a {:href "https://github.com/thheller/shadow-cljs"} "ShadowCLJS, ")
-      ($ ui/a {:href "https://bun.sh"} "and BunJS.")))
+        ($ ui/a {:href "https://github.com/pitch-io/uix"} "UIx, ")
+        ($ ui/a {:href "https://tailwindcss.com"} "TailwindCSS, ")
+        ($ ui/a {:href "https://github.com/thheller/shadow-cljs"} "ShadowCLJS, ")
+        ($ ui/a {:href "https://bun.sh"} "and BunJS.")))
     ($ :.bg-neutral-100.dark:bg-neutral-900.rounded-xl.py-8.px-12
       ($ counter))
     ($ ui/button {:class '[my-20] 
