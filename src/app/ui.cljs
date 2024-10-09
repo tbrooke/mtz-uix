@@ -7,7 +7,7 @@
                        '[text-white
                          bg-gradient-to-r 
                          bg-gradient-to-r 
-                   						"from-[#A2DA5F]"
+                         "from-[#A2DA5F]"
                          from-10%
                          "to-[#97B3F8]"
                          hover:bg-gradient-to-l 
@@ -29,7 +29,7 @@
                    '[text-transparent
                      bg-clip-text
                      bg-gradient-to-r 
-               						"from-[#A2DA5F]"
+                     "from-[#A2DA5F]"
                      from-0%
                      "to-[#97B3F8]"
                      mb-4 
