@@ -1,0 +1,26 @@
+{
+  "name": "utsb-cljs-starter",
+  "type": "module",
+  "scripts": {
+    "dev": "concurrently \"bun shadow:dev\" \"bun css:dev\"",
+    "prod": "bun shadow:prod && bun css:prod && bun mkdir:prod",
+    "shadow:dev": "bunx shadow-cljs watch :app",
+    "shadow:prod": "bunx shadow-cljs release :app",
+    "css:dev": "bunx tailwindcss -i ./src/css/main.css -o ./public/css/main.css --watch",
+    "css:prod": "NODE_ENV=production bunx tailwindcss -o ./public/css/main.css --minify",
+    "mkdir:prod": "rm -rf prod && mkdir -p prod/css prod/js && cp public/index.html prod/index.html && cp public/js/main.js prod/js/main.js && cp public/css/main.css prod/css/main.css"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "concurrently": "^9.0.1",
+    "shadow-cljs": "^2.28.16",
+    "tailwindcss": "^3.4.13"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
+  }
+}

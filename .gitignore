@@ -1,0 +1,16 @@
+# Build files
+/public/js
+/public/css/main.css
+/prod
+
+# JavaScript artifacts
+node_modules
+
+# ClojureScript artifacts
+.shadow-cljs
+.clj-kondo/*
+!.clj-kondo/config.edn
+.lsp
+
+# macOS artifacts
+.DS_Store

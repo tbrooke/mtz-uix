@@ -1,0 +1,4 @@
+{:linters {:clojure-lsp/unused-public-var 
+            {:exclude-when-defined-by #{uix.core/defui}}}
+ :lint-as {uix.core/defui clojure.core/defn
+           uix.core/$     hooks.uix/$}}
