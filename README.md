@@ -9,7 +9,7 @@ This repo started out as an exploratory exercise to help me familiarize myself w
 - [<b>S</b>hadow CLJS](https://github.com/thheller/shadow-cljs)
 - [<b>B</b>unJS](https://bun.sh)
 
-The end result is a starter that creates a React SPA with excellent Shadow and Tailwind hot-reloading and production builds (7KB CSS, ~100KB JS) all orchestrated by Bun.
+The end result is a starter that creates a React SPA with excellent Shadow and Tailwind hot-reloading and production builds (~2KB CSS, ~70KB JS gzipped) all orchestrated by Bun.
 
 ## Getting started
 
