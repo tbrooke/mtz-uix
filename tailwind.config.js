@@ -2,7 +2,7 @@
 export default {
   content: process.env.NODE_ENV == 'production' 
     ? ["./public/js/main.js"] 
-    : ["./src/app/**/*.cljs", "./public/js/cljs-runtime/*.js"],
+    : ["./src/app/**/*.cljs", "./public/js/main.js"],
   theme: {
     extend: {},
   },

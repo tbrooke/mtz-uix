@@ -1,0 +1,13 @@
+node_modules
+.git
+.gitignore
+README.md
+Dockerfile
+docker-compose.yml
+.dockerignore
+.shadow-cljs
+public/js
+prod
+.calva
+*.log
+.DS_Store
