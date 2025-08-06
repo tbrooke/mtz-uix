@@ -12,12 +12,8 @@
 
 (defui app []
   ($ :main.flex.flex-col.gap-8.min-h-screen.justify-center.items-center.dark:bg-neutral-950.px-12.py-12
-    ($ ui/heading "ClojureScript Starter"
-      ($ ui/p {:class '[my-2]} "Made with " 
-        ($ ui/a {:href "https://github.com/pitch-io/uix"} "UIx, ")
-        ($ ui/a {:href "https://tailwindcss.com"} "TailwindCSS, ")
-        ($ ui/a {:href "https://github.com/thheller/shadow-cljs"} "ShadowCLJS, ")
-        ($ ui/a {:href "https://bun.sh"} "and BunJS.")))
+    ($ ui/heading "Mount Zion United Church of Christ"
+       ($ ui/p {:class '[my-2]} "We are a family oriented church located in China Grove. If you’re looking for a place to call home, please come join us one Sunday morning or at one of our community events. Maybe you’ll find that Mount Zion is the family you’ve been looking for. "))
     ($ :.bg-neutral-100.dark:bg-neutral-900.rounded-xl.py-8.px-12
       ($ counter))
     ($ ui/button {:class '[my-20] 
