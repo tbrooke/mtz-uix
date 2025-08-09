@@ -8,3 +8,5 @@
 
 (defn ^:export ^:dev/after-load init []
   (uix.dom/render-root ($ app) root))
+
+(init)

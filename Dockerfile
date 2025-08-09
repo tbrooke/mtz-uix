@@ -2,6 +2,13 @@ FROM oven/bun:1-alpine as base
 
 WORKDIR /app
 
+# Install Java and Clojure CLI
+RUN apk add --no-cache openjdk11-jre curl bash
+RUN curl -L -O https://github.com/clojure/brew-install/releases/latest/download/linux-install.sh && \
+    chmod +x linux-install.sh && \
+    ./linux-install.sh && \
+    rm linux-install.sh
+
 FROM base as deps
 COPY package.json bun.lockb ./
 RUN bun install --frozen-lockfile

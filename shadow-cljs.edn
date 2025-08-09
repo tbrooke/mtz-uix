@@ -1,8 +1,5 @@
-{:dependencies 
-   [[com.pitch/uix.core "1.1.1"]
-    [com.pitch/uix.dom "1.1.1"]]
- :source-paths ["src"]
- :dev-http {3000 "public"}
+{:deps true
+ :dev-http {3000 {:root "public" :host "0.0.0.0"}}
  :builds 
    {:app {:target :browser
           :modules {:main {:init-fn app.main/init}}}}}

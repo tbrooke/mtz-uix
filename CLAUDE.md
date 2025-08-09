@@ -6,9 +6,17 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 This is a ClojureScript starter project using UIx (React wrapper), TailwindCSS, Shadow-CLJS, and Bun. It creates a React SPA with hot-reloading for both ClojureScript and CSS, producing optimized production builds (~2KB CSS, ~70KB JS gzipped).
 
-## Development Commands
+## Docker Development Environment
 
-### Starting Development
+**IMPORTANT: Always work within Docker containers. Never run commands directly on host system.**
+
+### Docker Commands
+- `docker-compose up` - Start development environment (available at http://localhost:3000)
+- `docker-compose up app-prod --profile production` - Start production build (available at http://localhost:8080)
+- `docker-compose exec app <command>` - Execute commands inside development container
+- `docker-compose down` - Stop and remove containers
+
+### Development Commands (run inside Docker container)
 - `bun dev` - Start development server with hot reload for both CLJS and CSS
 - `bun shadow:dev` - Start Shadow-CLJS development build only
 - `bun css:dev` - Start TailwindCSS watcher only

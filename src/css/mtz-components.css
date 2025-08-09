@@ -1,0 +1,281 @@
+/* Mount Zion Church Component Styles */
+
+/* CSS Custom Properties for consistency */
+:root {
+  --primary-blue: rgb(0, 124, 220);
+  --text-default: #374151;
+  --text-light: #4b5563;
+  --text-dark: #1f2937;
+  --border-color: #e5e7eb;
+  --white-translucent: rgba(255, 255, 255, 0.9);
+  --shadow-light: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-medium: 0 4px 12px rgba(0, 124, 220, 0.3);
+  --shadow-light-blue: 0 4px 12px rgba(0, 124, 220, 0.2);
+  --text-shadow-light: 0 1px 2px rgba(255, 255, 255, 0.8);
+  --text-shadow-medium: 0 2px 4px rgba(255, 255, 255, 0.8);
+  --text-shadow-subtle: 0 1px 3px rgba(255, 255, 255, 0.8);
+}
+
+/* Logo Component */
+.mtz-logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: black;
+}
+
+.mtz-logo-text {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+/* Header Component */
+.mtz-header {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  width: 100%;
+  border-bottom: 1px solid var(--border-color);
+  background-color: white;
+  box-shadow: var(--shadow-light);
+}
+
+.mtz-header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: 12px 16px;
+}
+
+.mtz-nav {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.mtz-nav-link {
+  color: var(--text-default);
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.mtz-nav-link:hover {
+  color: var(--primary-blue);
+}
+
+/* Mobile Menu Toggle */
+.mtz-mobile-toggle {
+  display: flex;
+  align-items: center;
+}
+
+@media (min-width: 768px) {
+  .mtz-mobile-toggle {
+    display: none;
+  }
+}
+
+.mtz-mobile-button {
+  display: flex;
+  flex-direction: column;
+  height: 2.5rem;
+  width: 2.5rem;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.mtz-mobile-line {
+  height: 0.125rem;
+  width: 1.5rem;
+  margin: 0.25rem 0;
+  border-radius: 9999px;
+  background-color: #374151;
+  transition: all 0.2s ease;
+}
+
+@media (prefers-color-scheme: dark) {
+  .mtz-mobile-line {
+    background-color: white;
+  }
+}
+
+/* Hero Section */
+.mtz-hero {
+  position: relative;
+  padding: 60px 20px;
+  text-align: center;
+  min-height: 500px;
+  overflow: hidden;
+}
+
+.mtz-hero-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, rgba(0,124,220,0.1) 0%, rgba(30,58,138,0.1) 50%, rgba(109,40,217,0.1) 100%);
+  animation: mtz-rotate 20s linear infinite;
+  z-index: 1;
+}
+
+.mtz-hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.mtz-hero-welcome {
+  color: var(--primary-blue);
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 16px;
+  font-size: 14px;
+  text-shadow: var(--text-shadow-light);
+}
+
+.mtz-hero-title-container {
+  margin: 20px 0;
+}
+
+.mtz-hero-title {
+  font-size: 3.5rem;
+  font-weight: bold;
+  margin: 0;
+  color: var(--text-dark);
+  line-height: 1.1;
+  text-shadow: var(--text-shadow-medium);
+}
+
+.mtz-hero-subtitle {
+  font-size: 2rem;
+  font-weight: 600;
+  margin: 10px 0 0 0;
+  color: var(--text-default);
+  line-height: 1.2;
+  text-shadow: var(--text-shadow-subtle);
+}
+
+.mtz-hero-description {
+  font-size: 1.25rem;
+  color: var(--text-light);
+  margin-bottom: 40px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+  text-shadow: var(--text-shadow-light);
+}
+
+.mtz-hero-buttons {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.mtz-btn-primary {
+  background-color: var(--primary-blue);
+  color: white;
+  padding: 14px 28px;
+  border: none;
+  border-radius: 50px;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow-medium);
+}
+
+.mtz-btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 124, 220, 0.4);
+}
+
+.mtz-btn-secondary {
+  background-color: var(--white-translucent);
+  color: var(--primary-blue);
+  padding: 14px 28px;
+  border: 2px solid var(--primary-blue);
+  border-radius: 50px;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow-light-blue);
+}
+
+.mtz-btn-secondary:hover {
+  background-color: var(--primary-blue);
+  color: white;
+  transform: translateY(-2px);
+}
+
+/* App Container */
+.mtz-app {
+  min-height: 100vh;
+  background-color: white;
+}
+
+/* Animations */
+@keyframes mtz-rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .mtz-hero-title {
+    font-size: 2.5rem;
+  }
+  
+  .mtz-hero-subtitle {
+    font-size: 1.5rem;
+  }
+  
+  .mtz-hero-description {
+    font-size: 1.1rem;
+  }
+  
+  .mtz-hero-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .mtz-btn-primary,
+  .mtz-btn-secondary {
+    width: 200px;
+  }
+}
+
+@media (max-width: 480px) {
+  .mtz-hero {
+    padding: 40px 15px;
+  }
+  
+  .mtz-hero-title {
+    font-size: 2rem;
+  }
+  
+  .mtz-hero-subtitle {
+    font-size: 1.25rem;
+  }
+  
+  .mtz-header-container {
+    padding: 12px 12px;
+  }
+  
+  .mtz-nav {
+    gap: 20px;
+  }
+}

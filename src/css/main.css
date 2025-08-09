@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Import Mount Zion component styles */
+@import './mtz-components.css';
+
 :root {
   --aw-color-bg-page: rgb(255 255 255);
   --aw-color-bg-page-dark: rgb(3 6 32);

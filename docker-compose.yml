@@ -4,13 +4,15 @@ services:
       context: .
       target: development
     ports:
-      - "3001:3000"
+      - "3000:3000"
     volumes:
       - .:/app
       - /app/node_modules
       - /app/.shadow-cljs
     environment:
       - NODE_ENV=development
+      - LANG=en_US.UTF-8
+      - LC_ALL=en_US.UTF-8
     stdin_open: true
     tty: true
 
