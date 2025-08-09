@@ -1,4 +1,6 @@
 {:paths ["src"]
  :deps {com.pitch/uix.core {:mvn/version "1.1.1"}
         com.pitch/uix.dom  {:mvn/version "1.1.1"}
-        thheller/shadow-cljs {:mvn/version "2.28.16"}}}
+        thheller/shadow-cljs {:mvn/version "2.28.16"}
+        metosin/reitit {:mvn/version "0.7.2"}
+        metosin/reitit-frontend {:mvn/version "0.7.2"}}}
