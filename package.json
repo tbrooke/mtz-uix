@@ -6,13 +6,17 @@
     "prod": "bun shadow:prod && bun css:prod && bun mkdir:prod",
     "shadow:dev": "bunx shadow-cljs watch :app",
     "shadow:prod": "bunx shadow-cljs release :app",
-    "css:dev": "bunx tailwindcss -i ./src/css/main.css -o ./public/css/main.css --watch",
-    "css:prod": "NODE_ENV=production bunx tailwindcss -i ./src/css/main.css -o ./public/css/main.css --minify",
+    "css:dev": "bunx postcss src/css/main.css -o public/css/main.css --watch",
+    "css:prod": "NODE_ENV=production bunx postcss src/css/main.css -o public/css/main.css",
     "mkdir:prod": "rm -rf prod && mkdir -p prod/css prod/js && cp public/index.html prod/index.html && cp public/js/main.js prod/js/main.js && cp public/css/main.css prod/css/main.css"
   },
   "devDependencies": {
     "@types/bun": "latest",
+    "autoprefixer": "^10.4.21",
     "concurrently": "^9.0.1",
+    "postcss": "^8.5.6",
+    "postcss-cli": "^11.0.1",
+    "postcss-import": "^16.1.1",
     "shadow-cljs": "^2.28.16",
     "tailwindcss": "^3.4.13"
   },

@@ -4,7 +4,8 @@
    This namespace provides reusable UI components including both generic
    components (button, heading, p, a) and Mount Zion-specific components
    that integrate with the CSS classes defined in mtz-components.css."
-  (:require [uix.core :refer [defui $]]))
+  (:require [uix.core :refer [defui $ use-state]]
+            [reitit.frontend.easy :as rfe]))
 
 ;; Generic UI Components
 
@@ -106,17 +107,61 @@
          :class (merge ["mtz-nav-link"] class)}
     text))
 
-(defui mtz-nav
-  "Main navigation component for Mount Zion.
+(defui mtz-dropdown-menu
+  "Dropdown menu container for navigation submenus.
    Props:
-   - :links - Vector of maps with :href and :text keys
+   - :children - Vector of child navigation items
+   - :visible? - Boolean controlling visibility
+   - :class - Additional CSS classes (vector of strings/keywords)"
+  [{:keys [children visible? class]}]
+  ($ :div {:class (merge ["mtz-dropdown-menu" 
+                          (if visible? "block" "hidden")] class)}
+    (for [child children]
+      ($ :a {:key (:href child)
+             :href (:href child)
+             :class "mtz-dropdown-item"}
+        (:text child)))))
+
+(defui mtz-nav-item
+  "Navigation item that can be either a regular link or dropdown trigger.
+   Props:
+   - :item - Navigation item map with :href, :text, :has-children, :children
+   - :class - Additional CSS classes (vector of strings/keywords)"
+  [{:keys [item class]}]
+  (let [[dropdown-open? set-dropdown-open!] (use-state false)
+        {:keys [href text has-children children]} item]
+    (if has-children
+      ;; Dropdown item
+      ($ :div {:class (merge ["mtz-dropdown-container" "relative"] class)
+               :on-mouse-enter #(set-dropdown-open! true)
+               :on-mouse-leave #(set-dropdown-open! false)}
+        ($ :div {:class "flex items-center cursor-pointer"
+                 :on-click (fn [e] 
+                             (.preventDefault e)
+                             (set-dropdown-open! (not dropdown-open?)))}
+          ($ :a {:href href
+                 :class "mtz-nav-link"
+                 :on-click #(.preventDefault %)}
+            text)
+          ($ :span {:class "mtz-nav-arrow ml-1"}
+            ">"))
+        ($ mtz-dropdown-menu {:children children
+                              :visible? dropdown-open?}))
+      ;; Regular link
+      ($ mtz-nav-link {:href href
+                       :text text
+                       :class class}))))
+
+(defui mtz-nav
+  "Main navigation component for Mount Zion with dropdown support.
+   Props:
+   - :links - Vector of navigation item maps with :href, :text, :has-children, :children keys
    - :class - Additional CSS classes (vector of strings/keywords)"
   [{:keys [links class]}]
   ($ :nav {:class (merge ["mtz-nav"] class)}
     (for [link links]
-      ($ mtz-nav-link {:key (:href link)
-                       :href (:href link)
-                       :text (:text link)}))))
+      ($ mtz-nav-item {:key (:href link)
+                       :item link}))))
 
 (defui mtz-mobile-toggle
   "Mobile menu toggle button with hamburger animation.
