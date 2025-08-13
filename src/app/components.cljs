@@ -71,7 +71,7 @@
 ;; (defui page-router [{:keys [current-route]}]
 ;;   (let [route-name (get-in current-route [:data :name])]
 ;;     (case route-name
-;;       :app.routes/home ($ pages/home-page)
+;;       :app.routes/home ($ pages/simple-home-page)
 ;;       :app.routes/about ($ pages/about-page)
 ;;       :app.routes/worship ($ pages/worship-page)
 ;;       :app.routes/events ($ pages/events-page)

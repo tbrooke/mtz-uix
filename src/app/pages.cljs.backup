@@ -36,22 +36,23 @@
                loading ($ :div.text-center.py-8 ($ ui/p "Loading..."))
                error ($ :div.text-center.py-8.text-red-600 ($ ui/p error))
                :else ($ :div.grid.md:grid-cols-2.gap-6
-                        (for [feature (sort-by :display_order features)]
-                          (let [image (:image feature)]
+                        (for [feature (sort-by :attributes.display_order features)]
+                          (let [attrs (:attributes feature)
+                                image (:image attrs)]
                             ($ :div.bg-white.rounded-lg.p-6.shadow-md
-                               {:key (str "feature-" (:id feature))}
+                               {:key (:id feature)}
                                (when image
                                  ($ :img.w-full.h-48.object-cover.rounded-lg.mb-4
-                                    {:src (str "http://localhost:1337" (:url image))
-                                     :alt (or (:alternativeText image) (:title feature))}))
-                               ($ :h4.text-xl.font-bold.mb-2 (:title feature))
-                               ($ ui/p (:content feature))
-                               (when (:button_text feature)
+                                    {:src (str "http://localhost:1337" (get-in image [:data :attributes :url]))
+                                     :alt (or (get-in image [:data :attributes :alternativeText]) (:title attrs))}))
+                               ($ :h4.text-xl.font-bold.mb-2 (:title attrs))
+                               ($ ui/p (:content attrs))
+                               (when (:button_text attrs)
                                  ($ :div.mt-4
                                     ($ ui/button
-                                       {:variant (keyword (or (:button_style feature) "primary"))
-                                        :href (:button_url feature)}
-                                       (:button_text feature))))))))))))))
+                                       {:variant (keyword (or (:button_style attrs) "primary"))
+                                        :href (:button_url attrs)}
+                                       (:button_text attrs)))))))))))))
 
 (defui about-page []
   ($ ui/mtz-app

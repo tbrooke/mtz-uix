@@ -1,0 +1,38 @@
+# docker-compose.override.yml
+# Development overrides for better hot-reload and networking
+
+services:
+  app:
+    build:
+      context: .
+      target: development
+    ports:
+      - "3000:3000"      # Frontend dev server
+      - "9630:9630"      # Shadow-CLJS dashboard
+      - "9631:9631"      # Shadow-CLJS nREPL
+    volumes:
+      - .:/app
+      - /app/node_modules
+      - /app/.shadow-cljs
+      - /app/.cpcache
+    environment:
+      - NODE_ENV=development
+      - LANG=en_US.UTF-8
+      - LC_ALL=en_US.UTF-8
+      - SHADOW_HOST=0.0.0.0  # Allow external connections for hot reload
+      - STRAPI_URL=http://host.docker.internal:1337  # Access Strapi on host
+    stdin_open: true
+    tty: true
+    command: bun dev
+    networks:
+      - church-network
+      - default
+    extra_hosts:
+      - "host.docker.internal:host-gateway"  # For Linux compatibility
+
+networks:
+  church-network:
+    external: true
+    name: church-website_church-network
+  default:
+    driver: bridge
