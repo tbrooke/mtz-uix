@@ -1,6 +1,6 @@
 {:deps true
  :nrepl {:host "0.0.0.0" :port 9631}
- :dev-http {3000 {:root "public" :host "0.0.0.0"}}
+ :dev-http {3000 {:root "public" :host "0.0.0.0" :push-state/index "index.html"}}
  :builds 
    {:app {:target :browser
           :output-dir "public/js"
@@ -8,5 +8,4 @@
           :modules {:main {:init-fn app.main/init}}
           :devtools {:http-root "public"
                      :http-port 3000
-                     :preloads [devtools.preload]
                      :after-load app.main/reload!}}}}
